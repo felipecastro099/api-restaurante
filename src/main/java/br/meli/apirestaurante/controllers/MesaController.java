@@ -21,4 +21,9 @@ public class MesaController {
     public ResponseEntity<?> find(@PathVariable Long id) {
         return ResponseEntity.ok(mesaRepository.findPerMesa(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> close(@PathVariable Long id) {
+        return ResponseEntity.ok(mesaRepository.closeMesa(id));
+    }
 }

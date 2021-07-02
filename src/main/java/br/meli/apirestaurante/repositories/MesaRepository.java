@@ -2,6 +2,7 @@ package br.meli.apirestaurante.repositories;
 
 import br.meli.apirestaurante.entities.Mesa;
 import br.meli.apirestaurante.entities.Pedido;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -12,6 +13,9 @@ import java.util.Optional;
 public class MesaRepository {
     List<Mesa> pedidos = new ArrayList<>();
     private Long id = 1L;
+
+    @Autowired
+    private CaixaRepository caixaRepository;
 
     public Mesa store(Mesa mesa) {
         mesa.setId(id);
@@ -36,5 +40,20 @@ public class MesaRepository {
         }
 
         return count;
+    }
+
+    public Mesa closeMesa(long id) {
+        Mesa mesa = null;
+
+        for (Mesa m : pedidos) {
+            if (m.getId() == id) {
+                mesa = m;
+            }
+        }
+
+        pedidos.remove(mesa);
+        caixaRepository.addValor(mesa);
+
+        return mesa;
     }
 }

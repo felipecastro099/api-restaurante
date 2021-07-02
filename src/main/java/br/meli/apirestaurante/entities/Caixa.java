@@ -1,17 +1,31 @@
 package br.meli.apirestaurante.entities;
 
+import java.util.List;
+
 public class Caixa {
-    private Double valor;
+    private List<Mesa> mesas;
+    private Double valorTotal;
 
-    public Caixa(Double valor) {
-        this.valor = valor;
+    public Caixa() {}
+
+    public Caixa(List<Mesa> mesas, Double valorTotal) {
+        this.mesas = mesas;
+        this.valorTotal = valorTotal;
     }
 
-    public Double getValor() {
-        return valor;
+    public List<Mesa> getMesas() {
+        return mesas;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public void setMesas(List<Mesa> mesas) {
+        this.mesas = mesas;
+    }
+
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 }
