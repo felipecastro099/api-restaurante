@@ -6,8 +6,6 @@ public class Caixa {
     private List<Mesa> mesas;
     private Double valorTotal;
 
-    public Caixa() {}
-
     public Caixa(List<Mesa> mesas, Double valorTotal) {
         this.mesas = mesas;
         this.valorTotal = valorTotal;

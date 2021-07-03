@@ -4,23 +4,18 @@ import br.meli.apirestaurante.entities.Caixa;
 import br.meli.apirestaurante.entities.Mesa;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class CaixaRepository {
-    Caixa caixa = new Caixa();
-    List<Mesa> mesas = caixa.getMesas();
+    List<Mesa> mesas = new ArrayList<>();
+    Caixa caixa = new Caixa(mesas, 0.0);
 
     public void addValor(Mesa mesa) {
-        Double valor = 0.0;
-        mesas.add(mesa);
-        caixa.setMesas(mesas);
-
-        for (Mesa m: caixa.getMesas()) {
-            valor += m.getValorTotal();
-        }
-
-        caixa.setValorTotal(valor);
+        System.out.println(mesa);
+        caixa.getMesas().add(mesa);
+        caixa.setValorTotal(caixa.getValorTotal() + mesa.getValorTotal());
     }
 
     public Caixa list() {
